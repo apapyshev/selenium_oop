@@ -18,6 +18,12 @@ class BasePage():
             return False
         return True
 
+    def click_element(self, how, what):
+        try:
+            self.browser.find_element(how, what).click()
+        except NoSuchElementException:
+            return False
+
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
