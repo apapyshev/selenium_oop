@@ -15,14 +15,14 @@ class ProductPage(BasePage):
     def should_be_in_basket_product(self):
         start = self.text_element_find(*ProductPageLocators.TEXT_PRODUCT)
         end = self.text_element_find(*ProductPageLocators.END_TEXT_PRODUCT)
-        assert start != end, "Product not in basket"
+        assert start.text != end.text, "Product not in basket"
 
     def should_be_write_price(self):
         start = self.text_element_find(*ProductPageLocators.PRICE_PRODUCT)
         end = self.text_element_find(*ProductPageLocators.END_PRICE_PRODUCT)
-        assert start != end, f"Price not correct {start} -> {end}"
+        assert start.text != end.text, f"Price not correct {start} -> {end}"
 
     def should_be_alert(self):
         self.click_element(*ProductPageLocators.ADD_BASKET)
         code = self.solve_quiz_and_get_code()
-        assert code is True, "No second alert presented"
+        assert code == True, "No second alert presented"
