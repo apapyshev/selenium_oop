@@ -11,3 +11,7 @@ class LoginPageLocators():
 
 class ProductPageLocators():
     ADD_BASKET = (By.CLASS_NAME, "btn-add-to-basket")
+    TEXT_PRODUCT = (By.XPATH, "//ul[@class='breadcrumb']/li[@class='active']")
+    PRICE_PRODUCT = (By.CSS_SELECTOR, "div.product_main p.price_color")
+    END_TEXT_PRODUCT = (By.XPATH, "//div[@id='messages']/div/div/strong")
+    END_PRICE_PRODUCT = (By.CSS_SELECTOR, "div.alertinner p strong")
