@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+import time
 
 class ProductPage(BasePage):
 
@@ -26,3 +27,16 @@ class ProductPage(BasePage):
         self.click_element(*ProductPageLocators.ADD_BASKET)
         code = self.solve_quiz_and_get_code()
         assert code == True, "No second alert presented"
+
+    def should_be_click(self):
+        self.click_element(*ProductPageLocators.ADD_BASKET)
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_not_be_disappeared_message(self):
+        self.click_element(*ProductPageLocators.ADD_BASKET)
+        time.sleep(1)
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
